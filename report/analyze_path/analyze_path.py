@@ -181,6 +181,9 @@ def analyze_path(args, dest_dir: str, arch: Architecture, app: Application, targ
         df_response_time = {}
         for case_str in ['best', 'worst', 'all']:
             plot_timeseries = Plot.create_response_time_timeseries_plot(target_path, case=case_str)
+            plot_timeseries.to_dataframe(
+                xaxis_type=xaxis_type).to_csv(
+                f'{dest_dir}/{target_path_name}_response_time_{case_str}.csv')
             fig_timeseries = plot_timeseries.figure(full_legends=False, xaxis_type=xaxis_type)
             df_response_time[case_str] = plot_timeseries.to_dataframe(xaxis_type=xaxis_type)
             fig_hist = Plot.create_response_time_histogram_plot(target_path, case=case_str).figure(full_legends=False, xaxis_type=xaxis_type)

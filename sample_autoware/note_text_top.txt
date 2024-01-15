@@ -1,1 +1,1 @@
-<p>This is a sample report</p>
+<p>Type: pilot-auto.xx1</p>
